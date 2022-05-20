@@ -15,10 +15,11 @@ class Request:
             'image_url': f'{url}',
             'size': 'auto'
         },
-        headers={'X-Api-Key': 'ULzhjocLJk53k8keLuMHaMyd'},)
+        headers={'X-Api-Key': 'DyNoGErN8hYLp7jpvtFKHcHi'},)
         if response.status_code == requests.codes.ok:
             return response.content
-        return bytes([-1])
+        print("Error:", response.status_code, response.text)
+        return bytes([10])
 
     
     def get_attack_1(self) -> dict:
@@ -104,6 +105,3 @@ class Request:
         data = res.read()
         a = json.loads(data.decode("utf-8"))
         return a
-
-    
-  
