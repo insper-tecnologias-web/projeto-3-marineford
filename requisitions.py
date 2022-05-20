@@ -91,13 +91,6 @@ class Request:
         data = res.read()
         a = json.loads(data.decode("utf-8"))
         return a
-
-    def get_attack_11(self) -> dict:
-        self.conn.request("GET", "/cards?attack=11", headers=self.headers)
-        res = self.conn.getresponse()
-        data = res.read()
-        a = json.loads(data.decode("utf-8"))
-        return a
     
     def get_attack_12(self) -> dict:
         self.conn.request("GET", "/cards?attack=12", headers=self.headers)

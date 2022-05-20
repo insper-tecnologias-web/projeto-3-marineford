@@ -3,7 +3,8 @@ from django.db import models
 # Create your models here.
 class Cards(models.Model):
     name = models.TextField(default=" ",null=True)
-    image = models.BinaryField()
+    #image = models.BinaryField(default=b'')
+    image = models.TextField(default=" ",null=True)
     attack = models.IntegerField(default=0,null=True)
     health = models.IntegerField(default=0,null=True)
     rarity = models.CharField(max_length=200)
