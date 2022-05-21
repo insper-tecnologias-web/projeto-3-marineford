@@ -3,6 +3,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path('all', views.get_all_cards, name='all'),
     path('attack1', views.get_attack1, name='attack1'),
     path('attack2', views.get_attack2, name='attack2'),
     path('attack3', views.get_attack3, name='attack3'),
