@@ -11,7 +11,7 @@ Em progresso:
 - :heavy_check_mark: Regras definidas;
 - Autenticação;
 - Batalhas funcionando;
-- Loja funcionando ;
+- :heavy_check_mark: Loja funcionando ;
 - Rankeamento funcionando;
 - Multiusuários permitido;
 - Criação do bot para jogar;

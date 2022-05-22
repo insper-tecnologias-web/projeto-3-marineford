@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from django.http import Http404
 from .serializers import CardsSerializer
 from requisitions import Request
+import random
 
 
 @api_view(['GET'])
@@ -16,6 +17,36 @@ def get_all_cards(request):
     except:
         raise Http404
     serialized_note= CardsSerializer(cards,many=True)
+    return Response(serialized_note.data)
+
+@api_view(['GET'])
+def get_comum(request):
+    try:
+        cards=Cards.objects.filter(rarity="Comum")
+        card = random.choice(cards)
+    except:
+        raise Http404
+    serialized_note= CardsSerializer(card)
+    return Response(serialized_note.data)
+
+@api_view(['GET'])
+def get_especial(request):
+    try:
+        cards=Cards.objects.filter(rarity="Especial")
+        card = random.choice(cards)
+    except:
+        raise Http404
+    serialized_note= CardsSerializer(card)
+    return Response(serialized_note.data)
+
+@api_view(['GET'])
+def get_raro(request):
+    try:
+        cards=Cards.objects.filter(rarity="Raro")
+        card = random.choice(cards)
+    except:
+        raise Http404
+    serialized_note= CardsSerializer(card)
     return Response(serialized_note.data)
 
 @api_view(['GET'])

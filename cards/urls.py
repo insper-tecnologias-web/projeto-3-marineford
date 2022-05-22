@@ -4,6 +4,9 @@ from . import views
 
 urlpatterns = [
     path('all', views.get_all_cards, name='all'),
+    path('comum', views.get_comum),
+    path('especial', views.get_especial),
+    path('raro', views.get_raro),
     path('attack1', views.get_attack1, name='attack1'),
     path('attack2', views.get_attack2, name='attack2'),
     path('attack3', views.get_attack3, name='attack3'),
