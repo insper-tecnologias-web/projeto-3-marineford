@@ -9,7 +9,7 @@ Em progresso:
 - :heavy_check_mark: Início do front-end;
 - :heavy_check_mark: Páginas iniciais;
 - :heavy_check_mark: Regras definidas;
-- Autenticação;
+- :heavy_check_mark: Autenticação;
 - Batalhas funcionando;
 - :heavy_check_mark: Loja funcionando ;
 - Rankeamento funcionando;
