@@ -76,6 +76,15 @@ def get_especial(request):
     return Response(serialized_note.data)
 
 @api_view(['GET'])
+def get_random(request):
+    try:
+        cards=Cards.objects.order_by('?').all()[:3]
+    except:
+        raise Http404
+    serialized_note= CardsSerializer(cards,many=True)
+    return Response(serialized_note.data)
+
+@api_view(['GET'])
 def get_raro(request):
     try:
         cards=Cards.objects.filter(rarity="Raro")

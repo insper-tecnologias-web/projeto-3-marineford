@@ -10,6 +10,7 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('register/', views.RegisterView.as_view(), name='auth_register'),
     path('all', views.get_all_cards, name='all'),
+    path('random', views.get_random),
     path('comum', views.get_comum),
     path('especial', views.get_especial),
     path('raro', views.get_raro),
