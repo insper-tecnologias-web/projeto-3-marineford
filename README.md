@@ -10,9 +10,9 @@ Em progresso:
 - :heavy_check_mark: Páginas iniciais;
 - :heavy_check_mark: Regras definidas;
 - :heavy_check_mark: Autenticação;
-- Batalhas funcionando;
+- :heavy_check_mark: Batalhas funcionando;
 - :heavy_check_mark: Loja funcionando ;
 - Rankeamento funcionando;
 - Multiusuários permitido;
-- Criação do bot para jogar;
+- :heavy_check_mark: Criação do bot para jogar;
 
