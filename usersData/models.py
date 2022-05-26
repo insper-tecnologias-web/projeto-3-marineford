@@ -9,6 +9,3 @@ class userData(models.Model):
     money = models.IntegerField(default=0)
     win = models.IntegerField(default=0)
     defeat = models.IntegerField(default=0)
-    commonPacksOpened = models.IntegerField(default=0)
-    specialPacksOpened = models.IntegerField(default=0)
-    rarePacksOpened = models.IntegerField(default=0)
