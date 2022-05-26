@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'usersData.apps.UsersdataConfig',
     'cards.apps.CardsConfig',
     'rest_framework',
     'corsheaders',

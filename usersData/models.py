@@ -2,7 +2,13 @@ from django.db import models
 
 # Create your models here.
 
-class User(models.Model):
+class userData(models.Model):
+    newUser = models.BooleanField(default=True)
     username = models.CharField(max_length=200)
-    cards = models.CharField(max_length=500)
-    money = models.IntegerField()
+    cards = models.CharField(max_length=500, default="")
+    money = models.IntegerField(default=0)
+    win = models.IntegerField(default=0)
+    defeat = models.IntegerField(default=0)
+    commonPacksOpened = models.IntegerField(default=0)
+    specialPacksOpened = models.IntegerField(default=0)
+    rarePacksOpened = models.IntegerField(default=0)
