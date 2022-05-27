@@ -3,9 +3,22 @@ from django.db import models
 # Create your models here.
 
 class userData(models.Model):
-    newUser = models.BooleanField(default=True)
-    username = models.CharField(max_length=200)
-    cards = models.CharField(max_length=500, default="")
-    money = models.IntegerField(default=0)
-    win = models.IntegerField(default=0)
-    defeat = models.IntegerField(default=0)
+    id = models.BigAutoField(primary_key=True)
+    username = models.CharField(max_length=200,null=True)
+    #cards = models.TextField(default="",null=True)
+    money = models.IntegerField(default=0,null=True)
+    win = models.IntegerField(default=0,null=True)
+    defeat = models.IntegerField(default=0,null=True)
+
+    def __str__(self):
+        return (self.username)
+
+class UsersCards(models.Model):
+    username = models.CharField(max_length=200,null=True)
+    name = models.TextField(default=" ",null=True)
+    image = models.TextField(default=" ",null=True)
+    attack = models.IntegerField(default=0,null=True)
+    health = models.IntegerField(default=0,null=True)
+    rarity = models.CharField(max_length=200)
+    def __str__(self):
+        return (self.name)

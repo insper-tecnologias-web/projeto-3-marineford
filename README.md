@@ -13,6 +13,6 @@ Em progresso:
 - :heavy_check_mark: Batalhas funcionando;
 - :heavy_check_mark: Loja funcionando ;
 - Rankeamento funcionando;
-- Multiusuários permitido;
+- :heavy_check_mark: Multiusuários permitido;
 - :heavy_check_mark: Criação do bot para jogar;
 

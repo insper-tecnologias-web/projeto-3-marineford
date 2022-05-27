@@ -1,18 +1,14 @@
-from curses.ascii import HT
 from django.shortcuts import render, redirect
-from .models import userData
+
+from cards.models import Cards
+from .models import userData,UsersCards
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import Http404
-from .serializers import userDataSerializer
+from .serializers import userDataSerializer,UserCardsSerializer
+import http.client
 import json
 
-# Create your views here.
-
-#abertura de peck de carta
-# win & defeat
-
-# O resto do código continua aqui pra cima
 
 @api_view(['GET'])
 def get_all_users(request):
@@ -26,27 +22,50 @@ def get_all_users(request):
 @api_view(['GET'])
 def get_user(request, username):
     try:
-        user, created = userData.objects.get_or_create(username)
+        user, created = userData.objects.get_or_create(username=username)
         if created:
             user.username = username
-            user.cards = initial_cards()
-            user.coins = 0
+            user.money = 0
             user.win = 0
             user.defeat = 0
+            user.save()
     except:
         raise Http404
-    serialized_user= userDataSerializer(user)
-    return Response(serialized_user.data)
+    finally:    
+        user = userData.objects.get(username=username)
+        serialized_user= userDataSerializer(user)
+        return Response(serialized_user.data)
+
+@api_view(['GET'])
+def get_user_cards(request, username):
+    try:
+        cards = UsersCards.objects.filter(username=username)
+        if cards.count()==0:
+            for card in Cards.objects.order_by('?').filter(rarity="Comum")[:5]:
+                new_card = UsersCards(username=username,name=card.name,image=card.image,
+                attack=card.attack,health=card.health,rarity=card.rarity)
+                new_card.save()
+    except:
+        raise Http404
+    finally:    
+        cards = UsersCards.objects.filter(username=username)
+        serialized_user= UserCardsSerializer(cards,many=True)
+        return Response(serialized_user.data)
 
 @api_view(['POST'])
 def after_battle(request, username):
     try:
         user = userData.objects.get(username=username)
         new_user_data = request.data
-        user.money = new_user_data['money']
-        user.win = new_user_data['win']
-        user.defeat = new_user_data['defeat']
+        user.money = new_user_data['money'] + user.money
+        user.win = new_user_data['win'] + user.win
+        user.defeat = new_user_data['defeat'] + user.defeat
         user.save()
+        user = userData.objects.get(username=username)
+        if user.money<0:
+            user.money = 0
+            user.save()
+
     except:
         raise Http404
     serialized_user = userDataSerializer(user)
@@ -57,12 +76,16 @@ def after_pack(request, username):
     try:
         user = userData.objects.get(username=username)
         new_user_data = request.data
-        user.money = new_user_data['money']
-        cards = json.loads(user.cards)
-        if new_user_data['cards'] not in cards:
-            cards.append(new_user_data['cards'])
-        user.cards = json.dumps(cards)
+        user.money = user.money + new_user_data['money']
+        id = new_user_data['id']
+        card = Cards.objects.get(id=id)
+        new_card = UsersCards(username=username,name=card.name,image=card.image,
+        attack=card.attack,health=card.health,rarity=card.rarity)
+        new_card.save()
         user.save()
+        if user.money<0:
+            user.money = 0
+            user.save()
     except:
         raise Http404
     serialized_user = userDataSerializer(user)
