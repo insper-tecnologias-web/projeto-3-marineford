@@ -5,7 +5,7 @@ from django.db import models
 class userData(models.Model):
     id = models.BigAutoField(primary_key=True)
     username = models.CharField(max_length=200,null=True)
-    #cards = models.TextField(default="",null=True)
+    cards = models.IntegerField(default=0,null=True)
     money = models.IntegerField(default=0,null=True)
     win = models.IntegerField(default=0,null=True)
     defeat = models.IntegerField(default=0,null=True)
@@ -14,6 +14,7 @@ class userData(models.Model):
         return (self.username)
 
 class UsersCards(models.Model):
+    card_id = models.IntegerField(default=0,null=True)
     username = models.CharField(max_length=200,null=True)
     name = models.TextField(default=" ",null=True)
     image = models.TextField(default=" ",null=True)

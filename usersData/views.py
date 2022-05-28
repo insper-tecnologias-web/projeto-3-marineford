@@ -13,7 +13,7 @@ import json
 @api_view(['GET'])
 def get_all_users(request):
     try:
-        users=userData.objects.all()
+        users=userData.objects.all().order_by('-cards','-win','defeat')
     except:
         raise Http404
     serialized_users= userDataSerializer(users,many=True)
@@ -25,9 +25,16 @@ def get_user(request, username):
         user, created = userData.objects.get_or_create(username=username)
         if created:
             user.username = username
+            user.cards = UsersCards.objects.filter(username=username).count()
             user.money = 0
             user.win = 0
             user.defeat = 0
+            user.save()
+        else:
+            user.cards = UsersCards.objects.filter(username=username).count()
+            user.save()
+        if user.money<0:
+            user.money = 0
             user.save()
     except:
         raise Http404
@@ -42,7 +49,7 @@ def get_user_cards(request, username):
         cards = UsersCards.objects.filter(username=username)
         if cards.count()==0:
             for card in Cards.objects.order_by('?').filter(rarity="Comum")[:5]:
-                new_card = UsersCards(username=username,name=card.name,image=card.image,
+                new_card = UsersCards(username=username,card_id=card.id, name=card.name,image=card.image,
                 attack=card.attack,health=card.health,rarity=card.rarity)
                 new_card.save()
     except:
@@ -65,7 +72,6 @@ def after_battle(request, username):
         if user.money<0:
             user.money = 0
             user.save()
-
     except:
         raise Http404
     serialized_user = userDataSerializer(user)
@@ -74,16 +80,22 @@ def after_battle(request, username):
 @api_view(['POST'])
 def after_pack(request, username):
     try:
-        user = userData.objects.get(username=username)
         new_user_data = request.data
-        user.money = user.money + new_user_data['money']
+        user = userData.objects.get(username=username)
         id = new_user_data['id']
-        card = Cards.objects.get(id=id)
-        new_card = UsersCards(username=username,name=card.name,image=card.image,
-        attack=card.attack,health=card.health,rarity=card.rarity)
-        new_card.save()
+        user.money = user.money + new_user_data['money']
         user.save()
-        if user.money<0:
+        new_card = UsersCards.objects.filter(card_id = id)
+        if new_card.count()==0:
+            card = Cards.objects.get(id=id)
+            card_received = UsersCards(username=username,card_id=id,name=card.name,image=card.image,
+            attack=card.attack,health=card.health,rarity=card.rarity)
+            card_received.save()
+            user = userData.objects.get(username=username)
+            user.cards = UsersCards.objects.filter(username=username).count()
+            user.save()
+        if userData.objects.get(username=username).money<0:
+            user = userData.objects.get(username=username)
             user.money = 0
             user.save()
     except:
