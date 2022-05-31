@@ -4,11 +4,13 @@
 
 (_Talvez você precise recarregar a página assim que entre no link..._)
 <div align="center" style="max-width:68rem;"> 
+
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)
 ![DjangoREST](https://img.shields.io/badge/DJANGO-REST-ff1709?style=for-the-badge&logo=django&logoColor=white&color=ff1709&labelColor=gray)
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
+
 </div>
 
 <center><img src="Liverstpne.gif" width=600 style="float: center; margin: 0px 0px 10px 10px"></center>
@@ -19,10 +21,11 @@ Api Backend: https://secure-reef-15187.herokuapp.com/
 
 FrontEnd: https://github.com/matheus-1618/Liverstone
 
-### Desenvolvedores
+<div align="center" style="max-width:68rem;">
 
-<table>
-  <tr>
+### Desenvolvedores
+<table align="center">
+  <tr align="center">
     <td align="center"><a href="https://github.com/matheus-1618"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/matheus-1618" width="100px;" alt=""/><br /><sub><b>Matheus Oliveira</b></sub></a><br /><a href="https://github.com/matheus-1618" title="Matheus Oliveira"></a>Developer</td>
    <td align="center"><a href="https://github.com/Adneycm"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/Adneycm" width="100px;" alt=""/><br /><sub><b>Adney Moura</b></sub></a><br /><a href="https://github.com/Adneycm" title="Adney Moura"></a>Developer</td>
    <td align="center"><a href="https://github.com/listerogusuku"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/listerogusuku" width="100px;" alt=""/><br /><sub><b>Lister Ogusuku</b></sub></a><br /><a href="https://github.com/listerogusuku" title="Lister Ogusuku"></a>Developer</td>
@@ -30,6 +33,7 @@ FrontEnd: https://github.com/matheus-1618/Liverstone
   </tr>
 </table>
 </div>
+
 
 ### Projeto Concluído:
 - :heavy_check_mark: Armazenar cards no banco de dados;
@@ -106,4 +110,10 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
+### Créditos
+Todo arquétipo e escopo deste projeto deve-se as aulas e atendimentos dos professores Bárbara Tieko e Gustavo Calixto, que forneceram todos os recursos, seja o repositório base, tal qual fontes de pesquisa e aplicações simplificadas, que tornaram o desenvolvimento deste projeto menos complexo e mais interativo, sendo um ótimo caminho de início para o desenvolvimento Full Stack de aplicações.
 
+Alguns recursos ou inspirações foram retiradas de algumas API's:
+- [Hearthstone API](https://rapidapi.com/omgvamp/api/hearthstone/)
+
+@2021, Insper, Quarto Semestre, Engenharia da Computação.
