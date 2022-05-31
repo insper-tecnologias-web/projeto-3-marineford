@@ -1,5 +1,5 @@
 # Liverstone: A new Experience
-### Para jogar: https://immense-fortress-12588.herokuapp.com/
+### [Para jogar](https://immense-badlands-64511.herokuapp.com)
 
 
 (_Talvez você precise recarregar a página assim que entre no link..._)
