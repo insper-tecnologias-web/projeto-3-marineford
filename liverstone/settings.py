@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'svg)3rhx&u_j3r0&3^khvd_px5kya%d$l8@xnlp=kn53hi)wl^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['secure-reef-15187.herokuapp.com', 'localhost', '127.0.0.1']
 
@@ -124,7 +124,7 @@ DATABASES = {
     'default': dj_database_url.config(
         default='postgresql://localhost/liverstone?user=liverstoneuser&password=liverstonesenha',
         conn_max_age=600,
-        ssl_require=True
+        ssl_require=not DEBUG
     )
 }
 
