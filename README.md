@@ -1,6 +1,12 @@
 # Liverstone 
+Para jogar: https://immense-fortress-12588.herokuapp.com/
+
+
+Api Backend: https://secure-reef-15187.herokuapp.com/
 
 Repositório do front: https://github.com/matheus-1618/Liverstone
+
+
 Projeto de um game de cartas baseado em Hearthstone.
 
 Em progresso:
